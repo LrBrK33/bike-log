@@ -7,8 +7,24 @@ import {
   TextInput,
   Button,
   Alert,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import {
+  // Pickers
+  PickerTime,
+  PickerDate,
+  PickerDateTime,
+  PickerDateRange,
+  // Dropdowns
+  DropdownList,
+  DropdownMeasurements,
+  DropdownNumber,
+  DropdownState,
+  // TypeScript Types
+  PickerItem,
+} from 'react-native-ultimate-modal-picker';
 
 const LocationPicker = ({selectedLocation, setSelectedLocation}) => {
   return (

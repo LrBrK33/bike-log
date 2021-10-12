@@ -14,35 +14,62 @@ import LocationPicker from './LocationPicker';
 const LogSettings = () => {
   const [dateText, onChangeDateText] = useState('');
   const [selectedLocation, setSelectedLocation] = useState();
+
   return (
     <View>
       <Text style={styles.title}>Log Setting</Text>
       <Text style={styles.entryName}>Date</Text>
       <TextInput style={styles.input} placeholder="Date"></TextInput>
 
-      <LocationPicker
+      {/* <LocationPicker
         selectedLocation={selectedLocation}
         setSelectedLocation={setSelectedLocation}
-      />
+      /> */}
+      <Text style={styles.entryName}>Location</Text>
       <TextInput style={styles.input} placeholder="Location"></TextInput>
       <Text style={styles.entryName}>Bike</Text>
       <TextInput style={styles.input} placeholder="Bike"></TextInput>
-      <Text style={styles.entryName}>Fork PSI</Text>
-      <TextInput style={styles.input} placeholder="Fork PSI"></TextInput>
-      <Text style={styles.entryName}>Fork Compression</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Fork Compression"></TextInput>
-      <Text style={styles.entryName}>Fork Rebound</Text>
-      <TextInput style={styles.input} placeholder="Fork Rebound"></TextInput>
-      <Text style={styles.entryName}>Shock PSI</Text>
-      <TextInput style={styles.input} placeholder="Shock PSI"></TextInput>
-      <Text style={styles.entryName}>Shock Compression</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Shock Compression"></TextInput>
-      <Text style={styles.entryName}>Shock Rebound</Text>
-      <TextInput style={styles.input} placeholder="Shock Rebound"></TextInput>
+      <Text style={styles.title}>Fork</Text>
+      <View style={styles.container}>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>PSI</Text>
+          <TextInput style={styles.input} placeholder="PSI"></TextInput>
+        </View>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>Compression</Text>
+          <TextInput style={styles.input} placeholder="Compression"></TextInput>
+        </View>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>Rebound</Text>
+          <TextInput style={styles.input} placeholder="Rebound"></TextInput>
+        </View>
+      </View>
+      <Text style={styles.title}>Shock</Text>
+      <View style={styles.container}>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>PSI</Text>
+          <TextInput style={styles.input} placeholder="PSI"></TextInput>
+        </View>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>Compression</Text>
+          <TextInput style={styles.input} placeholder="Compression"></TextInput>
+        </View>
+        <View style={styles.thirdInput}>
+          <Text style={styles.entryName}>Rebound</Text>
+          <TextInput style={styles.input} placeholder="Rebound"></TextInput>
+        </View>
+      </View>
+      <Text style={styles.title}>Tires</Text>
+      <View style={styles.container}>
+        <View style={styles.halfInput}>
+          <Text style={styles.entryName}>Front PSI</Text>
+          <TextInput style={styles.input} placeholder="Front PSI"></TextInput>
+        </View>
+        <View style={styles.halfInput}>
+          <Text style={styles.entryName}>Rear PSI</Text>
+          <TextInput style={styles.input} placeholder="Rear PSI"></TextInput>
+        </View>
+      </View>
       <Button title="Submit" />
     </View>
   );
@@ -56,6 +83,19 @@ const styles = StyleSheet.create({
   },
   entryName: {
     paddingLeft: 10,
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+  },
+
+  thirdInput: {
+    width: '33%',
+  },
+  halfInput: {
+    width: '50%',
   },
   input: {
     height: 40,

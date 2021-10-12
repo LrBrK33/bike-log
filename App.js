@@ -72,7 +72,7 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <LogSettings styles={styles} />
+          <LogSettings />
         </View>
       </ScrollView>
     </SafeAreaView>
