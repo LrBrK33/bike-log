@@ -8,15 +8,22 @@ import {
   Button,
   Alert,
 } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import LocationPicker from './LocationPicker';
 
 const LogSettings = () => {
   const [dateText, onChangeDateText] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState();
   return (
     <View>
       <Text style={styles.title}>Log Setting</Text>
       <Text style={styles.entryName}>Date</Text>
       <TextInput style={styles.input} placeholder="Date"></TextInput>
-      <Text style={styles.entryName}>Location</Text>
+
+      <LocationPicker
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation}
+      />
       <TextInput style={styles.input} placeholder="Location"></TextInput>
       <Text style={styles.entryName}>Bike</Text>
       <TextInput style={styles.input} placeholder="Bike"></TextInput>
