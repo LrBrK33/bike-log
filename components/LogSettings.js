@@ -11,7 +11,11 @@ import {
 // import {Picker} from '@react-native-picker/picker';
 // import LocationPicker from './LocationPicker';
 
-const LogSettings = () => {
+const LogSettings = ({
+  onChangeToggleLogSettings,
+  loggedSettings,
+  setLoggedSettings,
+}) => {
   const [date, onChangeDate] = useState('');
   const [location, onChangeLocation] = useState('');
   const [bike, onChangeBike] = useState('');
@@ -27,7 +31,7 @@ const LogSettings = () => {
   // const [selectedLocation, setSelectedLocation] = useState();
 
   const handleClick = () => {
-    console.log({
+    setLoggedSettings(...loggedSettings, {
       date: date,
       location: location,
       bike: bike,
@@ -40,6 +44,7 @@ const LogSettings = () => {
       frontTirePSI: frontTirePSI,
       rearTirePSI: rearTirePSI,
     });
+    onChangeToggleLogSettings(false);
   };
 
   return (

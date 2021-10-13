@@ -1,1 +1,41 @@
-{"location": [{"bike": "Intense Spider"}]}
+[
+  {
+    "date": "10/21/2021",
+    "location": "Brushy Creek",
+    "bike": "Intense Spider XC",
+    "forkPSI": 150,
+    "forkCompression": 0,
+    "forkRebound": 0,
+    "shockPSI": 215,
+    "shockCompression": 0,
+    "shockRebound": 5,
+    "frontTirePSI": 28,
+    "rearTirePSI": 28
+  },
+  {
+    "date": "10/18/2021",
+    "location": "Santa Rita Ranch",
+    "bike": "Intense Spider XC",
+    "forkPSI": 150,
+    "forkCompression": 0,
+    "forkRebound": 0,
+    "shockPSI": 215,
+    "shockCompression": 0,
+    "shockRebound": 5,
+    "frontTirePSI": 20,
+    "rearTirePSI": 25
+  },
+  {
+    "date": "10/2/2021",
+    "location": "Brushy Creek",
+    "bike": "Intense Spider XC",
+    "forkPSI": 150,
+    "forkCompression": 0,
+    "forkRebound": 0,
+    "shockPSI": 215,
+    "shockCompression": 0,
+    "shockRebound": 5,
+    "frontTirePSI": 28,
+    "rearTirePSI": 28
+  }
+]
