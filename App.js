@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -16,6 +16,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
 
 import {
@@ -28,42 +29,19 @@ import {
 
 import LogSettings from './components/LogSettings';
 
-// const Section = ({children, title}): Node => {
-//   const isDarkMode = useColorScheme() === 'dark';
-//   return (
-//     <View style={styles.sectionContainer}>
-//       <Text
-//         style={[
-//           styles.sectionTitle,
-//           {
-//             color: isDarkMode ? Colors.white : Colors.black,
-//           },
-//         ]}>
-//         {title}
-//       </Text>
-//       <Text
-//         style={[
-//           styles.sectionDescription,
-//           {
-//             color: isDarkMode ? Colors.light : Colors.dark,
-//           },
-//         ]}>
-//         {children}
-//       </Text>
-//     </View>
-//   );
-// };
+let loggedSettingsImport = require('./db/sampleData.json');
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [toggleLogSettings, onChangeToggleLogSettings] = useState(false);
+  const [loggedSettings, setLoggedSettings] = useState(loggedSettingsImport);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
@@ -72,7 +50,24 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <LogSettings />
+          {toggleLogSettings ? (
+            <LogSettings
+              onChangeToggleLogSettings={onChangeToggleLogSettings}
+              loggedSettings={loggedSettings}
+              setLoggedSettings={setLoggedSettings}
+            />
+          ) : (
+            <View>
+              <Text>Welcome to Bike Tuner! </Text>
+              <Button
+                title="Add Setting"
+                onPress={() => onChangeToggleLogSettings(true)}
+              />
+              {/* {loggedSettingsImport.map(loggedSetting => (
+                <LoggedSetting setting={loggedSetting} />
+              ))} */}
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
