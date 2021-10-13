@@ -15,6 +15,7 @@ const LogSettings = ({
   onChangeToggleLogSettings,
   loggedSettings,
   setLoggedSettings,
+  onPressGoToTop,
 }) => {
   const [date, onChangeDate] = useState('');
   const [location, onChangeLocation] = useState('');
@@ -30,7 +31,7 @@ const LogSettings = ({
 
   // const [selectedLocation, setSelectedLocation] = useState();
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     if (!date || !location || !bike) {
       Alert.alert('Please fill in Date, Location and Bike before submitting');
     } else {
@@ -51,12 +52,17 @@ const LogSettings = ({
         ...loggedSettings,
       ]);
       onChangeToggleLogSettings(false);
+      onPressGoToTop();
     }
   };
 
+  const handleCancel = () => {
+    onChangeToggleLogSettings(false);
+    onPressGoToTop();
+  };
   return (
     <View>
-      <Text style={styles.title}>Log Settings</Text>
+      <Text style={styles.header}>Log Settings</Text>
       <Text style={styles.entryName}>Date</Text>
       <TextInput
         style={styles.input}
@@ -78,7 +84,7 @@ const LogSettings = ({
         style={styles.input}
         placeholder="Bike"
         onChangeText={onChangeBike}></TextInput>
-      <Text style={styles.title}>Fork</Text>
+      <Text style={styles.component}>Fork</Text>
       <View style={styles.container}>
         <View style={styles.thirdInput}>
           <Text style={styles.entryName}>PSI</Text>
@@ -108,54 +114,65 @@ const LogSettings = ({
             keyboardType="numeric"></TextInput>
         </View>
       </View>
-      <Text style={styles.title}>Shock</Text>
+      <Text style={styles.component}>Shock</Text>
       <View style={styles.container}>
         <View style={styles.thirdInput}>
           <Text style={styles.entryName}>PSI</Text>
           <TextInput
             style={styles.input}
             placeholder="PSI"
-            onChangeText={onChangeShockPSI}></TextInput>
+            onChangeText={onChangeShockPSI}
+            keyboardType="numeric"></TextInput>
         </View>
         <View style={styles.thirdInput}>
           <Text style={styles.entryName}>Compression</Text>
           <TextInput
             style={styles.input}
             placeholder="Compression"
-            onChangeText={onChangeShockCompression}></TextInput>
+            onChangeText={onChangeShockCompression}
+            keyboardType="numeric"></TextInput>
         </View>
         <View style={styles.thirdInput}>
           <Text style={styles.entryName}>Rebound</Text>
           <TextInput
             style={styles.input}
             placeholder="Rebound"
-            onChangeText={onChangeShockRebound}></TextInput>
+            onChangeText={onChangeShockRebound}
+            keyboardType="numeric"></TextInput>
         </View>
       </View>
-      <Text style={styles.title}>Tires</Text>
+      <Text style={styles.component}>Tires</Text>
       <View style={styles.container}>
         <View style={styles.halfInput}>
           <Text style={styles.entryName}>Front PSI</Text>
           <TextInput
             style={styles.input}
             placeholder="Front PSI"
-            onChangeText={onChangeFrontTirePSI}></TextInput>
+            onChangeText={onChangeFrontTirePSI}
+            keyboardType="numeric"></TextInput>
         </View>
         <View style={styles.halfInput}>
           <Text style={styles.entryName}>Rear PSI</Text>
           <TextInput
             style={styles.input}
             placeholder="Rear PSI"
-            onChangeText={onChangeRearTirePSI}></TextInput>
+            onChangeText={onChangeRearTirePSI}
+            keyboardType="numeric"></TextInput>
         </View>
       </View>
-      <Button title="Submit" onPress={handleClick} />
+      <Button title="Submit" onPress={handleSubmit} />
+      <Button title="Cancel" onPress={handleCancel} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
+  header: {
+    fontSize: 30,
+    fontWeight: '600',
+    padding: 10,
+  },
+  component: {
     fontSize: 20,
     fontWeight: '600',
     padding: 10,

@@ -13,27 +13,38 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import {Picker} from '@react-native-picker/picker';
 // import LocationPicker from './LocationPicker';
 
-const LoggedSetting = ({loggedSetting}) => {
+const LoggedSetting = ({loggedSetting, handleDeletePreviousSetting}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles}>{loggedSetting.date}</Text>
-        <Text style={styles}>{loggedSetting.location}</Text>
-        <Icon name="remove" size={20} color="firebrick" />
+        <Text style={styles.header}>{loggedSetting.date}</Text>
+        <Text style={styles.header}>{loggedSetting.location}</Text>
+        <Icon
+          name="remove"
+          size={20}
+          color="firebrick"
+          onPress={() => handleDeletePreviousSetting(loggedSetting.id)}
+        />
       </View>
       <View style={styles.settings} key={loggedSetting.id}>
-        <Text>{loggedSetting.bike}</Text>
+        <Text style={styles.header}>{loggedSetting.bike}</Text>
         <Text style={styles.component}>Fork</Text>
-        <Text style={styles.third}>PSI: {loggedSetting.forkPSI}</Text>
-        <Text style={styles.third}>Comp: {loggedSetting.forkCompression}</Text>
-        <Text style={styles.third}>Rebound: {loggedSetting.forkRebound}</Text>
+        <Text style={styles.psi}>PSI: {loggedSetting.forkPSI}</Text>
+        <Text style={styles.compression}>
+          Compression: {loggedSetting.forkCompression}
+        </Text>
+        <Text style={styles.rebound}>Rebound: {loggedSetting.forkRebound}</Text>
         <Text style={styles.component}>Shock</Text>
-        <Text style={styles.third}>PSI: {loggedSetting.shockPSI}</Text>
-        <Text style={styles.third}>Comp: {loggedSetting.shockCompression}</Text>
-        <Text style={styles.third}>Rebound: {loggedSetting.shockRebound}</Text>
+        <Text style={styles.psi}>PSI: {loggedSetting.shockPSI}</Text>
+        <Text style={styles.compression}>
+          Compression: {loggedSetting.shockCompression}
+        </Text>
+        <Text style={styles.rebound}>
+          Rebound: {loggedSetting.shockRebound}
+        </Text>
         <Text style={styles.component}>Tire PSI</Text>
-        <Text style={styles.half}>Front: {loggedSetting.frontTirePSI}</Text>
-        <Text style={styles.half}>Rear: {loggedSetting.rearTirePSI}</Text>
+        <Text style={styles.psi}>Front: {loggedSetting.frontTirePSI}</Text>
+        <Text style={styles.psi}>Rear: {loggedSetting.rearTirePSI}</Text>
       </View>
     </View>
   );
@@ -41,7 +52,7 @@ const LoggedSetting = ({loggedSetting}) => {
 
 const styles = StyleSheet.create({
   component: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
     paddingTop: 5,
     width: '100%',
@@ -61,10 +72,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    fontSize: 15,
   },
   settings: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  psi: {
+    width: '30%',
+    fontSize: 15,
+  },
+  compression: {
+    width: '42%',
+    fontSize: 15,
+  },
+  rebound: {
+    width: '28%',
+    fontSize: 15,
   },
   third: {
     width: '33%',
@@ -77,12 +101,6 @@ const styles = StyleSheet.create({
   },
   half: {
     width: '50%',
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
   },
 });
 
