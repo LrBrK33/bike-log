@@ -5,13 +5,9 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 const Header = () => {
   return (
     <View style={styles.container}>
-      <Icon
-        name="bicycle"
-        size={35}
-        style={{transform: [{rotateY: '180deg'}]}}
-      />
-      <Text style={styles.title}> Bike Tuner </Text>
       <Icon name="bicycle" size={35} />
+      <Text style={styles.title}> Bike Log </Text>
+      <Icon name="wrench" size={30} />
     </View>
   );
 };

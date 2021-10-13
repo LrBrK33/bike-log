@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import {NavigationContainer} from '@react-navigation/native';
 
 import Header from './components/Header';
 import LogSettings from './components/LogSettings';
@@ -60,42 +59,40 @@ const App = () => {
   //   );
   // }
   return (
-    <NavigationContainer>
-      <SafeAreaView>
-        <StatusBar />
-        <ScrollView contentInsetAdjustmentBehavior="automatic" ref={goToTop}>
-          <View>
-            {toggleLogSettings ? (
-              <LogSettings
-                onChangeToggleLogSettings={onChangeToggleLogSettings}
-                loggedSettings={loggedSettings}
-                setLoggedSettings={setLoggedSettings}
-                onPressGoToTop={onPressGoToTop}
-              />
-            ) : (
-              <View style={styles.sectionContainer}>
-                <Header styles={styles} />
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => onChangeToggleLogSettings(true)}>
-                  <Icon name="plus" style={styles.buttonText} />
-                  <Text style={styles.buttonText}> Log Setting</Text>
-                </TouchableOpacity>
-                <Text style={styles.sectionTitle}>Previous Settings:</Text>
-                {loggedSettings.map(loggedSetting => {
-                  return (
-                    <LoggedSetting
-                      loggedSetting={loggedSetting}
-                      handleDeletePreviousSetting={handleDeletePreviousSetting}
-                    />
-                  );
-                })}
-              </View>
-            )}
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </NavigationContainer>
+    <SafeAreaView>
+      <StatusBar />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" ref={goToTop}>
+        <View>
+          {toggleLogSettings ? (
+            <LogSettings
+              onChangeToggleLogSettings={onChangeToggleLogSettings}
+              loggedSettings={loggedSettings}
+              setLoggedSettings={setLoggedSettings}
+              onPressGoToTop={onPressGoToTop}
+            />
+          ) : (
+            <View style={styles.sectionContainer}>
+              <Header styles={styles} />
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => onChangeToggleLogSettings(true)}>
+                <Icon name="plus" style={styles.buttonText} />
+                <Text style={styles.buttonText}> Log Setting</Text>
+              </TouchableOpacity>
+              <Text style={styles.sectionTitle}>Previous Settings:</Text>
+              {loggedSettings.map(loggedSetting => {
+                return (
+                  <LoggedSetting
+                    loggedSetting={loggedSetting}
+                    handleDeletePreviousSetting={handleDeletePreviousSetting}
+                  />
+                );
+              })}
+            </View>
+          )}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
