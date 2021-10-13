@@ -7,6 +7,7 @@ import {
   TextInput,
   Button,
   Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 // import {Picker} from '@react-native-picker/picker';
 // import LocationPicker from './LocationPicker';
@@ -61,7 +62,7 @@ const LogSettings = ({
     onPressGoToTop();
   };
   return (
-    <View>
+    <KeyboardAvoidingView behavior="padding">
       <Text style={styles.header}>Log Settings</Text>
       <Text style={styles.entryName}>Date</Text>
       <TextInput
@@ -162,7 +163,7 @@ const LogSettings = ({
       </View>
       <Button title="Submit" onPress={handleSubmit} />
       <Button title="Cancel" onPress={handleCancel} />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
