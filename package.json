@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "nodemon server/index.js",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -13,6 +13,8 @@
     "@react-native-community/datetimepicker": "^3.5.2",
     "@react-native-picker/picker": "^2.1.0",
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.13",
     "react": "17.0.2",
     "react-native": "0.66.0",
     "react-native-sqlite-storage": "^6.0.1",
