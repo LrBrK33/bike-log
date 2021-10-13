@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -19,14 +19,7 @@ import {
   Button,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
+import Header from './components/Header';
 import LogSettings from './components/LogSettings';
 import LoggedSetting from './components/LoggedSetting';
 
@@ -36,37 +29,46 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [toggleLogSettings, onChangeToggleLogSettings] = useState(false);
   const [loggedSettings, setLoggedSettings] = useState(loggedSettingsImport);
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+
+  const goToTop = useRef(null);
+
+  const onPressGoToTop = () => {
+    goToTop.current.scrollTo({x: 0, y: 0, animated: true});
+  };
+
+  const handleDeletePreviousSetting = id => {
+    setLoggedSettings(previousSettings => {
+      return previousSettings.filter(setting => setting.id != id);
+    });
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        {/* <Header /> */}
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+    <SafeAreaView>
+      <StatusBar />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" ref={goToTop}>
+        <View>
           {toggleLogSettings ? (
             <LogSettings
               onChangeToggleLogSettings={onChangeToggleLogSettings}
               loggedSettings={loggedSettings}
               setLoggedSettings={setLoggedSettings}
+              onPressGoToTop={onPressGoToTop}
             />
           ) : (
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Welcome to Bike Tuner! </Text>
+              <Header styles={styles} />
               <Button
                 title="Add Setting"
                 onPress={() => onChangeToggleLogSettings(true)}
               />
               <Text style={styles.sectionTitle}>Previous Settings:</Text>
               {loggedSettings.map(loggedSetting => {
-                return <LoggedSetting loggedSetting={loggedSetting} />;
+                return (
+                  <LoggedSetting
+                    loggedSetting={loggedSetting}
+                    handleDeletePreviousSetting={handleDeletePreviousSetting}
+                  />
+                );
               })}
             </View>
           )}
