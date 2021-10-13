@@ -28,6 +28,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import LogSettings from './components/LogSettings';
+import LoggedSetting from './components/LoggedSetting';
 
 let loggedSettingsImport = require('./db/sampleData.json');
 
@@ -57,15 +58,16 @@ const App: () => Node = () => {
               setLoggedSettings={setLoggedSettings}
             />
           ) : (
-            <View>
-              <Text>Welcome to Bike Tuner! </Text>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Welcome to Bike Tuner! </Text>
               <Button
                 title="Add Setting"
                 onPress={() => onChangeToggleLogSettings(true)}
               />
-              {/* {loggedSettingsImport.map(loggedSetting => (
-                <LoggedSetting setting={loggedSetting} />
-              ))} */}
+              <Text style={styles.sectionTitle}>Previous Settings:</Text>
+              {loggedSettings.map(loggedSetting => {
+                return <LoggedSetting loggedSetting={loggedSetting} />;
+              })}
             </View>
           )}
         </View>

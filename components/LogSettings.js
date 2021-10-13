@@ -31,20 +31,27 @@ const LogSettings = ({
   // const [selectedLocation, setSelectedLocation] = useState();
 
   const handleClick = () => {
-    setLoggedSettings(...loggedSettings, {
-      date: date,
-      location: location,
-      bike: bike,
-      forkPSI: forkPSI,
-      forkCompression: forkCompression,
-      forkRebound: forkRebound,
-      shockPSI: shockPSI,
-      shockCompression: shockCompression,
-      shockRebound: shockRebound,
-      frontTirePSI: frontTirePSI,
-      rearTirePSI: rearTirePSI,
-    });
-    onChangeToggleLogSettings(false);
+    if (!date || !location || !bike) {
+      Alert.alert('Please fill in Date, Location and Bike before submitting');
+    } else {
+      setLoggedSettings([
+        {
+          date: date,
+          location: location,
+          bike: bike,
+          forkPSI: forkPSI,
+          forkCompression: forkCompression,
+          forkRebound: forkRebound,
+          shockPSI: shockPSI,
+          shockCompression: shockCompression,
+          shockRebound: shockRebound,
+          frontTirePSI: frontTirePSI,
+          rearTirePSI: rearTirePSI,
+        },
+        ...loggedSettings,
+      ]);
+      onChangeToggleLogSettings(false);
+    }
   };
 
   return (
