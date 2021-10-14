@@ -27,7 +27,6 @@ const LoggedSetting = ({loggedSetting, handleDeletePreviousSetting}) => {
         />
       </View>
       <View style={styles.settings} key={loggedSetting.id}>
-        <Text style={styles.header}>{loggedSetting.bike}</Text>
         <Text style={styles.component}>Fork</Text>
         <Text style={styles.psi}>PSI: {loggedSetting.forkPSI}</Text>
         <Text style={styles.compression}>
@@ -66,14 +65,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderRightWidth: 1,
     borderColor: '#D3D3D3',
-    padding: 15,
+    padding: 10,
     margin: 5,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    fontSize: 15,
+    fontSize: 16,
   },
   settings: {
     flexDirection: 'row',
@@ -81,15 +80,15 @@ const styles = StyleSheet.create({
   },
   psi: {
     width: '30%',
-    fontSize: 15,
+    fontSize: 16,
   },
   compression: {
     width: '42%',
-    fontSize: 15,
+    fontSize: 16,
   },
   rebound: {
     width: '28%',
-    fontSize: 15,
+    fontSize: 16,
   },
   third: {
     width: '33%',
