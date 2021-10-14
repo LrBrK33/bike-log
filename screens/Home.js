@@ -14,13 +14,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-import Header from './components/Header';
-import LogSettings from './components/LogSettings';
-import LoggedSetting from './components/LoggedSetting';
+import Header from '../components/Header';
+import LogSettings from '../components/LogSettings';
+import LoggedSetting from '../components/LoggedSetting';
 
-let loggedSettingsImport = require('./db/sampleData.json');
+let loggedSettingsImport = require('../db/sampleData.json');
 
-const App = () => {
+const Home = () => {
   const [initializing, setInitializing] = useState(false);
   const [user, setUser] = useState('yes');
   const [toggleLogSettings, onChangeToggleLogSettings] = useState(false);
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Home;

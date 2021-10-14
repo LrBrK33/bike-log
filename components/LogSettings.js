@@ -80,11 +80,6 @@ const LogSettings = ({
         placeholder="Location"
         // value={values.location}
         onChangeText={onChangeLocation}></TextInput>
-      <Text style={styles.entryName}>Bike</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Bike"
-        onChangeText={onChangeBike}></TextInput>
       <Text style={styles.component}>Fork</Text>
       <View style={styles.container}>
         <View style={styles.thirdInput}>

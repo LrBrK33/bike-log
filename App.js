@@ -26,6 +26,7 @@ const App = () => {
   const [user, setUser] = useState('yes');
   const [toggleLogSettings, onChangeToggleLogSettings] = useState(false);
   const [loggedSettings, setLoggedSettings] = useState(loggedSettingsImport);
+  const [bike, setBike] = useState('Intense Spider XC');
 
   const goToTop = useRef(null);
 
@@ -75,6 +76,7 @@ const App = () => {
             ) : (
               <View style={styles.sectionContainer}>
                 <Header styles={styles} />
+                <Text style={styles.bike}>{bike}</Text>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => onChangeToggleLogSettings(true)}>
@@ -102,9 +104,11 @@ const App = () => {
 const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
-    paddingHorizontal: 24,
+    paddingHorizontal: 10,
   },
   sectionTitle: {
+    paddingVertical: 10,
+    paddingLeft: 10,
     fontSize: 24,
     fontWeight: '600',
   },
@@ -128,6 +132,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     color: '#FFFFFF',
+  },
+  bike: {
+    fontSize: 30,
+    fontWeight: '600',
+    padding: 20,
+    justifyContent: 'center',
+    textAlign: 'center',
   },
 });
 
